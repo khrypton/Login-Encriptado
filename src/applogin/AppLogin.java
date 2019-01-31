@@ -35,10 +35,36 @@ public class AppLogin {
         }
         return h.toString();
     }
+    
+    //==========================================================================
+    //--------------------- MI PROPIO ENCRIPTADOR ------------------------------
+    //==========================================================================
+    //Mi encriptador
+    public static String miEncriptador(String Cadena){
+        try {
+            //Inicializa Nueva cadena
+            String CadenaEncriptada = "";
+            //Longitud de la cadena
+            int N = Cadena.length();
+            //Encritar cadena
+            for(int i=0; i<N; i++){
+                //Convertir cada caracter de la cadena a su codigo ascci
+                char Caracter = Cadena.charAt(i);
+                int NumAscci = (int)(Caracter);
+                //Suma el numero ascci del caracter mas la longitud de la cadena
+                CadenaEncriptada += String.valueOf(NumAscci+N);
+            }
+            return CadenaEncriptada;
+            
+        } catch (Exception e) {
+            System.out.println("Error..." + e);
+            return null;
+        }
+    }
     public static void main(String[] args) {
         // TODO code application logic here
         try {
-            System.out.println(getMD5("John"));
+            System.out.println(miEncriptador("John"));
         }
         catch (Exception e) {
             System.out.println("Error..." + e);
